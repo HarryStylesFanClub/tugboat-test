@@ -19,5 +19,5 @@ services:
         - cat .tugboat/tugboat.txt | mail -s "[2] Tugboat Preview ${TUGBOAT_PREVIEW_ID}" tugboat@example.com
         - cat .tugboat/tugboat.txt
       online:
-        - false | true; echo $?
         - set -o pipefail; false | true; echo $?
+        - false | true; echo $?
