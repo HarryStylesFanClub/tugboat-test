@@ -4,6 +4,17 @@ services:
     aliases: test
     http: true
     https: false
+    visualdiff:
+      # Visual Diffs depend on Screenshots being enabled. If Screenshots
+      # are disabled for this Service, Visual Diffs are also disabled,
+      # and this setting has no effect.
+      enabled: true
+      # The following options are used when taking a screenshot of
+      # the URL for the _base_ preview
+      timeout: 30
+      waitUntil:
+        - networkidle0
+      fullPage: true
     urls:
       - /
     commands:
