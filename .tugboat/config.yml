@@ -6,12 +6,12 @@ services:
         https: false
         commands:
             init: |
-                - echo "********** INIT **********"
-                - apt-get update
-                - apt-get install bsd-mailx
+                echo "********** INIT **********"
+                apt-get update
+                apt-get install bsd-mailx
                 - echo "hello" | tee -a /tmp/stuff.txt
-                - rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-                - ln -snf "${TUGBOAT_ROOT}" "${DOCROOT}"
+                rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+                ln -snf "${TUGBOAT_ROOT}" "${DOCROOT}"
             update:
                 - echo "********** UPDATE **********"
             build:
