@@ -5,7 +5,7 @@ services:
         http: true
         https: false
         commands:
-            init:
+            init: |
                 - echo "********** INIT **********"
                 - apt-get update
                 - apt-get install bsd-mailx
