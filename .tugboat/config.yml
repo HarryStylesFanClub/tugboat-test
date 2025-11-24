@@ -14,4 +14,4 @@ services:
       build:
         - echo "********** BUILD **********"
       start:
-        - cd "${TUGBOAT_ROOT}/server" && ./server
+        - cd "${TUGBOAT_ROOT}/server" && ./server &
