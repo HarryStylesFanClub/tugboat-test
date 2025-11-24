@@ -68,7 +68,7 @@
       function connect() {
         // Create a new WebSocket connection
         // ws:// protocol is used for WebSocket connections (wss:// for secure)
-        ws = new WebSocket("ws://localhost:8080/ws");
+        ws = new WebSocket(`ws://${window.location.hostname}/ws`);
 
         // Event handler: called when the connection is successfully established
         ws.onopen = function () {
