@@ -4,14 +4,14 @@ services:
     aliases: test
     http: true
     https: false
+    expose: 8080
     commands:
       init:
         - echo "********** INIT **********"
         - apk add --no-cache --virtual .build-deps bash gcc musl-dev openssl go
         - wget -O go.tgz https://dl.google.com/go/go1.25.4.src.tar.gz
         - tar -C /usr/local -xzf go.tgz
-        - cd /usr/local/go/src
-        - ./make.bash
+        - cd /usr/local/go/src && ./make.bash
 
       update:
         - cd "${TUGBOAT_ROOT}/server" &&  go build -o server main.go && chmod +x server
