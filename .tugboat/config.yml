@@ -10,8 +10,8 @@ services:
         - echo "********** INIT **********"
         - apk add --no-cache --virtual .build-deps bash gcc musl-dev openssl go
         - apk add --no-cache runit
-        - mkdir -p /etc/service
-        - cp -r "${TUGBOAT_ROOT}/.tugboat/runit/server" /etc/service/
+        - mkdir -p /etc/service/server
+        - cp "${TUGBOAT_ROOT}/.tugboat/runit/server/run" /etc/service/server/run
         - chmod +x /etc/service/server/run
       update:
         - cd "${TUGBOAT_ROOT}/server" &&  go build -o server main.go && chmod +x server
