@@ -2,8 +2,8 @@ services:
     apache:
         image: tugboatqa/httpd
         aliases: test
-        http: true
-        https: false
+        http: false
+        https: true
         commands:
             init:
                 - echo "********** INIT **********"
