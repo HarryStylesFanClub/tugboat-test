@@ -2,13 +2,39 @@
   <head>
     <title>Tugboat Test Page</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <!-- Content-Security-Policy: Test different policies -->
+    <!-- Allow self embedding (will work) -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self'"> -->
+    <!-- To block self embedding, use: -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none'"> -->
+    <!-- To allow any origin: -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="frame-ancestors *"> -->
   </head>
   <body>
     <img src="logo.svg" alt="Tugboat Logo" />
+    <h2>CSP Iframe Test - Embedding self</h2>
+    <p>Current URL: <span id="currentUrl"></span></p>
     <iframe
-      src="https://en.wikipedia.org/wiki/WebSocket"
+      id="testIframe"
+      src=""
       width="100%"
-      height="100%"
+      height="600px"
+      style="border: 2px solid #333;"
     ></iframe>
+    <script>
+      // Set iframe to load the same page
+      const currentUrl = window.location.href;
+      document.getElementById('currentUrl').textContent = currentUrl;
+      document.getElementById('testIframe').src = currentUrl;
+      
+      // Log iframe load events
+      document.getElementById('testIframe').onload = function() {
+        console.log('Iframe loaded successfully - CSP allows embedding');
+      };
+      
+      document.getElementById('testIframe').onerror = function() {
+        console.log('Iframe failed to load - CSP may be blocking');
+      };
+    </script>
   </body>
 </html>
