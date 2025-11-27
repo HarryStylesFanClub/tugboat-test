@@ -13,4 +13,4 @@ services:
         - cd ${TUGBOAT_ROOT}/server && go mod download
         - cd ${TUGBOAT_ROOT}/server && go build -o server .
       start:
-        - cd ${TUGBOAT_ROOT}/server && ./server &
+        - cd ${TUGBOAT_ROOT}/server && exec ./server >> /var/log/server.log 2>&1
