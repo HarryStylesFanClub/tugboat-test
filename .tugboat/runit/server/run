@@ -5,4 +5,3 @@
 
 cd "${TUGBOAT_ROOT}/server"
 exec ./server
-

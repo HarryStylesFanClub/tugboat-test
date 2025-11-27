@@ -9,9 +9,12 @@ services:
       init:
         - echo "********** INIT **********"
         - apk add --no-cache --virtual .build-deps bash gcc musl-dev openssl go
+        - apk add --no-cache runit
+        - mkdir -p /etc/service/server
+        - cp "${TUGBOAT_ROOT}/.tugboat/runit/server/run" /etc/service/server/run
       update:
-        - cd "${TUGBOAT_ROOT}/server" &&  go build -o server main.go && chmod +x server
+        - chmod +x /etc/service/server/run      
       build:
         - echo "********** BUILD **********"
       start:
-        - cd "${TUGBOAT_ROOT}/server" && ./server &
+        - exec runsvdir /etc/service
