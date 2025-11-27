@@ -87,12 +87,12 @@ func main() {
 
 	// Print a message indicating the server is starting
 	fmt.Println("Server starting on port 8080")
-	fmt.Println("WebSocket endpoint available at: ws://localhost:8080/ws")
+	fmt.Println("WebSocket endpoint available at: ws://0.0.0.0:8080/ws")
 
 	// Start the HTTP server on port 8080
 	// ListenAndServe blocks and will only return if there's an error
 	// nil means use the default HTTP handler (which we've configured above)
-	if err := http.ListenAndServe(":8080", nil); err != nil {
+	if err := http.ListenAndServe("0.0.0.0:8080", nil); err != nil {
 		// If the server fails to start, log the fatal error and exit
 		log.Fatal("Server failed to start: ", err)
 	}
