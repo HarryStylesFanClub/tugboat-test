@@ -7,14 +7,10 @@ services:
     expose: 8080
     commands:
       init:
-        - echo "********** INIT **********"
         - apk add --no-cache --virtual .build-deps bash gcc musl-dev openssl go
-        - apk add --no-cache runit
-        - mkdir -p /etc/service/server
-        - cp "${TUGBOAT_ROOT}/.tugboat/runit/server/run" /etc/service/server/run
-      update:
-        - chmod +x /etc/service/server/run      
-      build:
-        - echo "********** BUILD **********"
+        - wget -O go.tgz https://dl.google.com/go/go1.24.1.src.tar.gz
+        - tar -C /usr/local -xzf go.tgz
+        - cd ${TUGBOAT_ROOT}/server && go mod download
+        - cd ${TUGBOAT_ROOT}/server && go build -o server .
       start:
-        - exec runsvdir /etc/service &
+        - cd ${TUGBOAT_ROOT}/server && ./server &
