@@ -17,4 +17,4 @@ services:
       build:
         - echo "********** BUILD **********"
       start:
-        - exec runsvdir /etc/service
+        - exec runsvdir /etc/service &
