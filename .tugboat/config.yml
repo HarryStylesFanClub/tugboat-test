@@ -1,5 +1,5 @@
 services:
-  apache:
+  go:
     image: tugboatqa/alpine
     aliases: test
     http: true
