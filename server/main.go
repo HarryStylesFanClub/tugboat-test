@@ -32,7 +32,7 @@ func handleWebSocket(w http.ResponseWriter, r *http.Request) {
 	defer conn.Close()
 
 	// Log when a client connects
-	log.Println("Client connected yay")
+	log.Println("Client connected")
 
 	// Infinite loop to continuously read messages from the client
 	for {
